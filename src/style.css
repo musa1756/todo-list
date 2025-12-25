@@ -1,5 +1,339 @@
+/* Reset & Base */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    color: #e4e4e4;
+}
+
+/* Main Layout */
+#app {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 280px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 30px 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* Projects List */
+#projects-list {
+    list-style: none;
+    flex: 1;
+}
+
+#projects-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#projects-list li:hover {
+    background: rgba(99, 102, 241, 0.3);
+    transform: translateX(5px);
+}
+
+.project-name {
+    font-size: 0.95rem;
+}
+
+.delete-project-btn {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+#projects-list li:hover .delete-project-btn {
+    opacity: 1;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.main-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+/* Todos List */
+#todos-list {
+    list-style: none;
+    max-width: 700px;
+}
+
+#todos-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+#todos-list li:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: scale(1.01);
+}
+
+/* Checkbox */
+.todo-checkbox {
+    width: 22px;
+    height: 22px;
+    accent-color: #6366f1;
+    cursor: pointer;
+}
+
+/* Todo Title */
+.todo-title {
+    flex: 1;
+    font-size: 1rem;
+}
+
+/* Todo Date */
+.todo-date {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+/* Priority Badges */
+.todo-priority {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+.todo-priority.low {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.todo-priority.medium {
+    background: rgba(249, 115, 22, 0.2);
+    color: #f97316;
+}
+
+.todo-priority.high {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+/* Delete Todo Button */
+.delete-todo-btn {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+#todos-list li:hover .delete-todo-btn {
+    opacity: 1;
+}
+
+.delete-todo-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Buttons */
+#add-project-btn,
+#add-todo-btn {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#add-project-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#add-project-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+#add-todo-btn {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    margin-top: 30px;
+}
+
+#add-todo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+}
+
+/* Empty State */
+#todos-list:empty::before {
+    content: 'No todos yet. Add one!';
+    display: block;
+    color: #666;
+    font-style: italic;
+    padding: 20px;
+}
+
+#projects-list:empty::before {
+    content: 'No projects';
+    display: block;
+    color: #666;
+    font-style: italic;
+    padding: 10px 0;
+}
+
+/* ========== DIALOGS ========== */
+dialog {
+    border: none;
+    border-radius: 16px;
+    padding: 0;
+    background: #1e1e2e;
+    color: #e4e4e4;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 90%;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+dialog form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+dialog h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+dialog input[type="text"],
+dialog input[type="date"],
+dialog textarea,
+dialog select {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #e4e4e4;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+dialog input:focus,
+dialog textarea:focus,
+dialog select:focus {
+    border-color: #6366f1;
+}
+
+dialog textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+dialog select {
+    cursor: pointer;
+}
+
+dialog select option {
+    background: #1e1e2e;
+    color: #e4e4e4;
+}
+
+.dialog-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.dialog-buttons button {
+    flex: 1;
+    padding: 14px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#cancel-project-btn,
+#cancel-todo-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #a0a0a0;
+}
+
+#cancel-project-btn:hover,
+#cancel-todo-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+#submit-project-btn,
+#submit-todo-btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+}
+
+#submit-project-btn:hover,
+#submit-todo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
 }

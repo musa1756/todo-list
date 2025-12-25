@@ -23,6 +23,35 @@
             <button id="add-todo-btn">New Todo</button>
         </main>
     </div>
+
+    <dialog id="project-dialog">
+        <form method="dialog">
+            <h3>New Project</h3>
+            <input type="text" id="project-name-input" placeholder="Project name" required>
+            <div class="dialog-buttons">
+                <button type="button" id="cancel-project-btn">Cancel</button>
+                <button type="submit" id="submit-project-btn">Create</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="todo-dialog">
+        <form method="dialog">
+            <h3>New Todo</h3>
+            <input type="text" id="todo-title-input" placeholder="Todo title" required>
+            <textarea id="todo-description-input" placeholder="Description (optional)"></textarea>
+            <input type="date" id="todo-date-input">
+            <select id="todo-priority-input">
+                <option value="low">Low Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="high">High Priority</option>
+            </select>
+            <div class="dialog-buttons">
+                <button type="button" id="cancel-todo-btn">Cancel</button>
+                <button type="submit" id="submit-todo-btn">Create</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 
 </html>
