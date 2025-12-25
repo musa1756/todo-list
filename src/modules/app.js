@@ -18,3 +18,20 @@ export function addProject(name) {
 export function getProjects() {
     return projects;
 }
+
+export function addTodoToProject(projectId, title, description, dueDate, priority) {
+    const project = projects.find(p => p.id === projectId);
+    const todo = createTodo(title, description, dueDate, priority);
+    project.todos.push(todo);
+}
+
+export function deleteTodo(projectId, todoId) {
+    const project = projects.find(p => p.id === projectId);
+    project.todos = project.todos.filter(todo => todo.id !== todoId);
+}
+
+export function deleteProject(projectId) {
+    projects = projects.filter(project => project.id !== projectId);
+}
+
+init();
