@@ -1,6 +1,6 @@
 // Factory function for creating Todo items
 
-export function createTodo(title, description, dueDate, priority, completed) {
+export function createTodo(title, description, dueDate, priority, completed = false) {
 
     const unicId = crypto.randomUUID();
 
@@ -10,6 +10,6 @@ export function createTodo(title, description, dueDate, priority, completed) {
         description,
         dueDate,
         priority,
-        completed: completed || false,
+        completed,
     }
 }
