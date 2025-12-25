@@ -1,3 +1,6 @@
 import './style.css';
+import { initHandlers } from './dom/handlers.js';
 
-console.log('Todo App is running!');
+document.addEventListener('DOMContentLoaded', () => {
+    initHandlers();
+});

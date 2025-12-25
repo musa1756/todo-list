@@ -10,5 +10,4 @@ export function createProject(name) {
         name,
         todos,
     }
-
 }
